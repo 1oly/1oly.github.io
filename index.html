@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OSM Buildings - Leaflet</title>
+<style>
+body {
+  margin: 0;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.time-control {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #999999;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px #000000;
+  vertical-align: middle;
+  font-family: sans-serif;
+  font-size: 14px;
+  padding: 8px 12px;
+}
+</style>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css">
+<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet-src.js"></script>
+<script src="OSMBuildings-Leaflet.js"></script>
+</head>
+
+<body>
+<div id="map"></div>
+
+<div class="time-control">Shadows
+<input id="date" type="range" min="1" max="365" step="1"><label for="date"></label>
+<input id="time" type="range" min="0" max="23" step="1"><label for="time"></label>
+</div>
+
+<script>
+var lyr06 = L.tileLayer('tiles_upload/06/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr07 = L.tileLayer('tiles_upload/07/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr08 = L.tileLayer('tiles_upload/08/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr09 = L.tileLayer('tiles_upload/09/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr10 = L.tileLayer('tiles_upload/10/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr11 = L.tileLayer('tiles_upload/11/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr12 = L.tileLayer('tiles_upload/12/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr13 = L.tileLayer('tiles_upload/13/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr14 = L.tileLayer('tiles_upload/14/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr15 = L.tileLayer('tiles_upload/15/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr16 = L.tileLayer('tiles_upload/16/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr17 = L.tileLayer('tiles_upload/17/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr18 = L.tileLayer('tiles_upload/18/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr19 = L.tileLayer('tiles_upload/19/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr20 = L.tileLayer('tiles_upload/20/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
+//var lyr21 = L.tileLayer('tiles_upload/21/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+
+var overlayMaps = {"06:00": lyr06,"08:00": lyr08,"10:00": lyr10,"12:00": lyr12,"14:00": lyr14,"16:00": lyr16,"18:00": lyr18,"20:00": lyr20}
+var map = new L.Map('map').setView([55.6898467358, 12.5591824505], 18);
+
+new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);;
+
+
+var osmb = new OSMBuildings(map).load();
+L.control.layers(overlayMaps,{Buildings: osmb}).addTo(map);
+
+var
+  now,
+  date, time,
+  timeRange, dateRange,
+  timeRangeLabel, dateRangeLabel;
+
+function changeDate() {
+  var Y = now.getFullYear(),
+    M = now.getMonth(),
+    D = now.getDate(),
+    h = now.getHours(),
+    m = 0;
+
+  timeRangeLabel.innerText = pad(h) + ':' + pad(m);
+  dateRangeLabel.innerText = Y + '-' + pad(M+1) + '-' + pad(D);
+
+  osmb.date(new Date(Y, M, D, h, m));
+}
+
+function onTimeChange() {
+  now.setHours(this.value);
+  now.setMinutes(0);
+  changeDate();
+}
+
+function onDateChange() {
+  now.setMonth(0);
+  now.setDate(this.value);
+  changeDate();
+}
+
+function pad(v) {
+  return (v < 10 ? '0' : '') + v;
+}
+
+timeRange = document.getElementById('time');
+dateRange = document.getElementById('date');
+timeRangeLabel = document.querySelector('*[for=time]');
+dateRangeLabel = document.querySelector('*[for=date]');
+
+now = new Date;
+changeDate();
+
+// init with day of year
+var Jan1 = new Date(now.getFullYear(), 0, 1);
+dateRange.value = Math.ceil((now-Jan1)/86400000);
+
+timeRange.value = now.getHours();
+
+timeRange.addEventListener('change', onTimeChange);
+dateRange.addEventListener('change', onDateChange );
+timeRange.addEventListener('input', onTimeChange);
+dateRange.addEventListener('input', onDateChange);
+
+//************************************************************
+
+</script>
+</body>
+</html>
