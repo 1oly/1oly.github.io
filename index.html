@@ -44,7 +44,8 @@ var lyr20 = L.tileLayer('tiles_upload/20/{z}/{x}/{y}.png', {tms: true, opacity: 
 var overlayMaps = {"06:00": lyr06,"08:00": lyr08,"10:00": lyr10,"12:00": lyr12,"14:00": lyr14,"16:00": lyr16,"18:00": lyr18,"20:00": lyr20}
 var map = new L.Map('map').setView([55.6898467358, 12.5591824505], 18);
 
-new L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);;
+
+new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);;
 
 
 //var osmb = new OSMBuildings(map).load();
