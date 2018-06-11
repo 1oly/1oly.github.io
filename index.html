@@ -1,32 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>OSM Buildings - Leaflet</title>
+<title>Solapp</title>
 <style>
 body {
+  padding: 0;
   margin: 0;
 }
 
-#map {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+html, body, #map {
+    height: 100%;
+    width: 100vw;
 }
 
-.time-control {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid #999999;
-  border-radius: 3px;
-  box-shadow: 1px 1px 2px #000000;
-  vertical-align: middle;
-  font-family: sans-serif;
-  font-size: 14px;
-  padding: 8px 12px;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet-src.js"></script>
@@ -56,7 +44,7 @@ var lyr20 = L.tileLayer('tiles_upload/20/{z}/{x}/{y}.png', {tms: true, opacity: 
 var overlayMaps = {"06:00": lyr06,"08:00": lyr08,"10:00": lyr10,"12:00": lyr12,"14:00": lyr14,"16:00": lyr16,"18:00": lyr18,"20:00": lyr20}
 var map = new L.Map('map').setView([55.6898467358, 12.5591824505], 18);
 
-new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);;
+new L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);;
 
 
 //var osmb = new OSMBuildings(map).load();
