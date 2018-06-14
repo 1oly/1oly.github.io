@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Solapp</title>
+<title>Skyggekort</title>
 <style>
 body {
   padding: 0;
@@ -39,27 +39,27 @@ html, body, #map {
 <div id="map"></div>
 
 <script>
-var lyr06 = L.tileLayer('tiles_upload/06/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr07 = L.tileLayer('tiles_upload/07/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
-var lyr08 = L.tileLayer('tiles_upload/08/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr09 = L.tileLayer('tiles_upload/09/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
-var lyr10 = L.tileLayer('tiles_upload/10/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr11 = L.tileLayer('tiles_upload/11/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
-var lyr12 = L.tileLayer('tiles_upload/12/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr13 = L.tileLayer('tiles_upload/13/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
-var lyr14 = L.tileLayer('tiles_upload/14/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr15 = L.tileLayer('tiles_upload/15/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
-var lyr16 = L.tileLayer('tiles_upload/16/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr17 = L.tileLayer('tiles_upload/17/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
-var lyr18 = L.tileLayer('tiles_upload/18/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr19 = L.tileLayer('tiles_upload/19/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
-var lyr20 = L.tileLayer('tiles_upload/20/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: ""});
-//var lyr21 = L.tileLayer('tiles_upload/21/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
 
-var overlayMaps = {"06:00": lyr06,"08:00": lyr08,"10:00": lyr10,"12:00": lyr12,"14:00": lyr14,"16:00": lyr16,"18:00": lyr18,"20:00": lyr20}
-var map = new L.Map('map').setView([55.6898467358, 12.5591824505], 18),
+var lyr06 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/06/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr07 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/07/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr08 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/08/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr09 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/09/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr10 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/10/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr11 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/11/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr12 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/12/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr13 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/13/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr14 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/14/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr15 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/15/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr16 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/16/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr17 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/17/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr18 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/18/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr19 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/19/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+var lyr20 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/20/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+
+var overlayMaps = {"06:00": lyr06,"07:00": lyr07,"08:00": lyr08,"09:00": lyr09,"10:00": lyr10,"11:00": lyr11,"12:00": lyr12,"13:00": lyr13,"14:00": lyr14,"15:00": lyr15,"16:00": lyr16,"17:00": lyr17,"18:00": lyr18,"19:00": lyr19,"20:00": lyr20}
+var map = new L.Map('map').setView([55.284040, 14.791288], 16),
 geocoder = L.Control.Geocoder.dawa({
-    geocodingQueryParams: {kommunekode: '0101'},
+    geocodingQueryParams: {kommunekode: '0400'},
     wildcard: true}),
   control = L.Control.geocoder({
     geocoder: geocoder
