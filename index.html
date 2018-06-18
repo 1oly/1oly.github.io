@@ -56,10 +56,24 @@ var lyr18 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/18
 var lyr19 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/19/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
 var lyr20 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles/20/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
 
-var overlayMaps = {"06:00": lyr06,"07:00": lyr07,"08:00": lyr08,"09:00": lyr09,"10:00": lyr10,"11:00": lyr11,"12:00": lyr12,"13:00": lyr13,"14:00": lyr14,"15:00": lyr15,"16:00": lyr16,"17:00": lyr17,"18:00": lyr18,"19:00": lyr19,"20:00": lyr20}
-var map = new L.Map('map').setView([55.284040, 14.791288], 16),
+var overlayMaps = {"06:00": lyr06,
+                   "07:00": lyr07,
+                   "08:00": lyr08,
+                   "09:00": lyr09,
+                   "10:00": lyr10,
+                   "11:00": lyr11,
+                   "12:00": lyr12,
+                   "13:00": lyr13,
+                   "14:00": lyr14,
+                   "15:00": lyr15,
+                   "16:00": lyr16,
+                   "17:00": lyr17,
+                   "18:00": lyr18,
+                   "19:00": lyr19,
+                   "20:00": lyr20}
+var map = new L.Map('map').setView([55.693685, 12.566364], 16),
 geocoder = L.Control.Geocoder.dawa({
-    geocodingQueryParams: {kommunekode: '0400'},
+    geocodingQueryParams: {kommunekode: '0101'},
     wildcard: true}),
   control = L.Control.geocoder({
     geocoder: geocoder
