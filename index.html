@@ -33,6 +33,7 @@ html, body, #map {
 <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="dist/leaflet-control-credits.js"></script>
 <link rel="stylesheet" href="dist/leaflet-control-credits.css" />
+<script src="dist/leaflet-geoip.js"></script>
 
 </head>
 
@@ -41,36 +42,32 @@ html, body, #map {
 
 <script>
 
-var lyr09 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/09/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr10 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/10/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr11 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/11/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr12 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/12/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr13 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/13/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr14 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/14/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr15 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/15/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr16 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/16/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr17 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/17/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
-var lyr18 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/tiles_test/18/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: "Indeholder data fra Styrelsen for Dataforsyning og Effektivisering, DHM, juni 2018"});
+var lyr09 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/MONTH/11/09/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: 'Data afledt af DHM &copy; <a href="https://sdfe.dk">SDFE</a>'});
+var lyr10 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/MONTH/11/10/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: 'Data afledt af DHM &copy; <a href="https://sdfe.dk">SDFE</a>'});
+var lyr11 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/MONTH/11/11/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: 'Data afledt af DHM &copy; <a href="https://sdfe.dk">SDFE</a>'});
+var lyr12 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/MONTH/11/12/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: 'Data afledt af DHM &copy; <a href="https://sdfe.dk">SDFE</a>'});
+var lyr13 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/MONTH/11/13/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: 'Data afledt af DHM &copy; <a href="https://sdfe.dk">SDFE</a>'});
+var lyr14 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/MONTH/11/14/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: 'Data afledt af DHM &copy; <a href="https://sdfe.dk">SDFE</a>'});
+var lyr15 = L.tileLayer('https://s3.eu-central-1.amazonaws.com/sunshade/MONTH/11/15/{z}/{x}/{y}.png', {tms: true, opacity: 0.6, attribution: 'Data afledt af DHM &copy; <a href="https://sdfe.dk">SDFE</a>'});
 
-var overlayMaps = {"08:00": lyr09,
-                   "09:00": lyr10,
-                   "10:00": lyr11,
-                   "11:00": lyr12,
-                   "12:00": lyr13,
-                   "13:00": lyr14,
-                   "14:00": lyr15,
-                   "15:00": lyr16,
-                   "16:00": lyr17,
-                   "17:00": lyr18}
-var map = new L.Map('map').setView([55.693685, 12.566364], 15),
+var overlayMaps = {"09:00": lyr09,
+                   "10:00": lyr10,
+                   "11:00": lyr11,
+                   "12:00": lyr12,
+                   "13:00": lyr13,
+                   "14:00": lyr14,
+                   "15:00": lyr15}
+
+var map = new L.Map('map').setView([55.702355, 10.634766], 8);
+
 geocoder = L.Control.Geocoder.dawa({
-    geocodingQueryParams: {kommunekode: '0101'},
+    geocodingQueryParams: {},
     wildcard: true}),
     control = L.Control.geocoder({
     geocoder: geocoder
-  }).addTo(map),
-  marker;
+  }).addTo(map);
 
+L.GeoIP.centerMapOnPosition(map,10);
 
 new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);;
 
@@ -84,6 +81,54 @@ var credctrl = L.controlCredits({
   width: "30",
   height: "30"
 }).addTo(map);
+
+
+var cities = []
+
+var CPH = {
+    "type": "Feature",
+    "geometry": { "type": "Polygon", "coordinates": [ [ [ 12.502596533201901, 55.715722643196159 ], [ 12.494584296105623, 55.626035933670401 ], [ 12.65307499692617, 55.621413088058532 ], [ 12.661448679631931, 55.711084326180028 ] ] ] }
+};
+cities.push(CPH)
+
+var Odense = {
+    "type": "Feature",
+    "geometry": { "type": "Polygon", "coordinates": [ [ [ 10.266113758298657, 55.489561937288137 ], [ 10.263240310338649, 55.399726217919778 ], [ 10.421094028452266, 55.397993736064151 ], [ 10.424326261531556, 55.487823665129689 ] ] ] }
+};
+cities.push(Odense)
+
+var Aarhus = {
+    "type": "Feature",
+    "geometry": { "type": "Polygon", "coordinates": [ [ [ 10.128521762025745, 56.209772025842533 ], [ 10.12589051720021, 56.119942393138707 ], [ 10.286689184865651, 56.118372079569085 ], [ 10.28969598395255, 56.208196411078681 ] ] ] }
+};
+cities.push(Aarhus)
+
+var Aalborg = {
+    "type": "Feature",
+    "geometry": { "type": "Polygon", "coordinates": [ [ [ 9.825536237260369, 57.110600106683691 ], [ 9.823544537790514, 57.020775477932567 ], [ 9.988227929311813, 57.01958405040557 ], [ 9.99061776162147, 57.10940460184748 ] ] ] }
+};
+cities.push(Aalborg)
+
+
+var myStyle = {
+    "weight": 5,
+    "opacity": 0.5,
+    "fillOpacity": 0
+};
+
+function onEachFeature(feature, layer) {
+        layer.on('click', function() {
+            map.fitBounds(layer.getBounds())
+        });
+
+    }
+
+var polygons = new L.geoJSON(cities,{
+    style: myStyle,
+    onEachFeature: onEachFeature
+})
+
+polygons.addTo(map)
 
 </script>
 </body>
