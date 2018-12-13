@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Skyggekort</title>
 <style>
-body {
-  padding: 0;
-  margin: 0;
-}
 
-html, body, #map {
+* { margin: 0; padding: 0; }
+
+body { font: 14px/1.4 Georgia, serif; }
+
+html, #map {
     position: absolute;
     height: 100%;
     width: 100vw;
+    padding: 0;
+}
+
+#banner {
+  position: absolute;
+  z-index: 601;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ec7f37;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+  overflow: hidden;
+}
+
+#banner-content {
+  width: 80vw;
+  margin: 0 auto;
+  padding: 10px;
+  border: 0;
 }
 
 </style>
@@ -38,7 +60,15 @@ html, body, #map {
 </head>
 
 <body>
+
 <div id="map"></div>
+
+  <div id="banner">
+    <div id="banner-content">
+    Vi udvikler og afventer nye data og vender tilbage i 2019.
+    </div>
+  </div>
+
 
 <script>
 
@@ -58,7 +88,7 @@ var overlayMaps = {"09:00": lyr09,
                    "14:00": lyr14,
                    "15:00": lyr15}
 
-var map = new L.Map('map').setView([55.702355, 10.634766], 8);
+var map = new L.Map('map').setView([55.69, 12.56], 15);
 
 geocoder = L.Control.Geocoder.dawa({
     geocodingQueryParams: {},
@@ -82,6 +112,7 @@ var credctrl = L.controlCredits({
   height: "30"
 }).addTo(map);
 
+/* Click to zoom feature:
 
 var cities = []
 
@@ -129,6 +160,8 @@ var polygons = new L.geoJSON(cities,{
 })
 
 polygons.addTo(map)
+
+*/
 
 </script>
 </body>
